@@ -35,9 +35,9 @@ export class UsersService {
     return users;
   }
 
-  async findOne(id: string) {
+  async findOne(username: string) {
     const user = await this.prisma.user.findUnique({
-      where: { id },
+      where: { username },
     });
 
     return user;

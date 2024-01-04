@@ -18,8 +18,9 @@ model User {
 }
 
 model Product {
-  id          String  @id
+  id          String   @id
   name        String
   description String
   value       Decimal
+  createdAt   DateTime
 }

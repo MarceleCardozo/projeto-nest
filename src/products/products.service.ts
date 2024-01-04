@@ -16,6 +16,7 @@ export class ProductsService {
         name,
         description,
         value,
+        createdAt: new Date(),
       },
     });
 
@@ -26,7 +27,11 @@ export class ProductsService {
   }
 
   async findAll() {
-    const products = await this.prisma.product.findMany();
+    const products = await this.prisma.product.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
 
     return products;
   }

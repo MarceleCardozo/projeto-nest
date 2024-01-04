@@ -9,6 +9,8 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'eslint-disable prettier/prettier',
+    'eslint-disable @typescript-eslint/no-unused-vars',
   ],
   root: true,
   env: {

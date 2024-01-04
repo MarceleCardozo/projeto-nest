@@ -8,7 +8,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { PrismaModule } from './prisma/prisma.module';
-import { LocalAuthGuard } from './auth/auth.guard';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [UsersModule, ProductsModule, AuthModule, PrismaModule],
@@ -18,7 +18,7 @@ import { LocalAuthGuard } from './auth/auth.guard';
     PrismaService,
     {
       provide: APP_GUARD,
-      useValue: LocalAuthGuard,
+      useClass: JwtAuthGuard,
     },
   ],
 })

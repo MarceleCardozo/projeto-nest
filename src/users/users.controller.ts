@@ -10,6 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserDTO } from './dto/user.dto';
+import { IsPublic } from 'src/auth/decorators/is-public-decorator';
 
 @Controller('users')
 export class UsersController {
@@ -18,6 +19,7 @@ export class UsersController {
     private prisma: PrismaService,
   ) {}
 
+  @IsPublic()
   @Post()
   create(@Body() createUserDto: UserDTO) {
     return this.usersService.create(createUserDto);
